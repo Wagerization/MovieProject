@@ -13,14 +13,13 @@ function formatQueryParams(params) {
 
 function displayResults(responseJson) {
   $("#results-list").empty();
-  for (let i = 0; i < responseJson.Info.length; i++) {
-    console.log(responseJson.Results.Type);
+   // console.log(responseJson.Results.Type);
     $("#results-list").append(`
-      <li><h3>${responseJson.Results[i].Name}</h3></li>
-      <li><p>${responseJson.Info[i].Type}</p></li>
-      
+      <ol>
+        <li><h3>${responseJson.Similar.Results}</h3></li>
+        <li><p>${responseJson.Info[i].Type}</p></li>
+      </ol>
       `);
-  }
 }
 
 function getMovieInfo(query) {
@@ -38,7 +37,7 @@ function getMovieInfo(query) {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => console.log(responseJson))
+    .then(responseJson => console.log(responseJson.Similar.Results))
     .catch(err => {
       $("#js-error-message").text(`Something went wrong: ${err.message}`);
     });
@@ -47,7 +46,7 @@ function getMovieInfo(query) {
 function watchForm() {
   $("form").submit(event => {
     event.preventDefault();
-    const searchTerm = $(".js-search-text").val();
+    const searchTerm = $("#js-search-text").val();
     getMovieInfo(searchTerm);
   });
 }
