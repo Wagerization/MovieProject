@@ -1,6 +1,6 @@
 "use strict";
 
-const apiKey = "348324-Adam-K01H3VNV";
+const apiKey = "348324-Adam-5NK0N5S1";
 const searchUrl = "https://tastedive.com/api/similar";
 const queryURL = "https://cors-anywhere.herokuapp.com/" + searchUrl;
 
@@ -12,19 +12,16 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
+  console.log(responseJson);
   $("#results-list").empty();
-   // console.log(responseJson.Results.Type);
-    $("#results-list").append(`
-      <ol>
-        <li><h3>${responseJson.Similar.Results}</h3></li>
-        <li><p>${responseJson.Info[i].Type}</p></li>
-      </ol>
-      `);
+  const li = responseJson.Similar.Results.map(l => `<li>${l.Name} - ${l.Type}</li>`);
+
+  $("#results-list").append(`<ol>${li}</ol>`);
 }
 
 function getMovieInfo(query) {
   const params = {
-    stateCode: query,
+    q: query,
     api_key: apiKey
   };
   const queryString = formatQueryParams(params);
@@ -37,7 +34,7 @@ function getMovieInfo(query) {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => console.log(responseJson.Similar.Results))
+    .then(responseJson => displayResults(responseJson))
     .catch(err => {
       $("#js-error-message").text(`Something went wrong: ${err.message}`);
     });
