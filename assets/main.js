@@ -1,6 +1,6 @@
 "use strict";
 
-const apiKey = "348324-Adam-K01H3VNV";
+const apiKey = "348324-Adam-J6W7N7GS";
 const searchUrl = "https://tastedive.com/api/similar";
 const queryURL = "https://cors-anywhere.herokuapp.com/" + searchUrl;
 
@@ -26,7 +26,6 @@ function getMovieInfo(query) {
   };
   const queryString = formatQueryParams(params);
   const url = queryURL + "?" + queryString;
-  console.log(params);
   fetch(url)
     .then(response => {
       if (response.ok) {
@@ -46,8 +45,6 @@ function watchForm() {
   $("form").submit(event => {
     event.preventDefault();
     const searchTerm = $("#js-search-text").val();
-    console.log($("#js-search-text"));
-    console.log(searchTerm);
     getMovieInfo(searchTerm);
   });
 }
