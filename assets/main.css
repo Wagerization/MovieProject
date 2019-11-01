@@ -12,3 +12,12 @@
 #js-form ul{
     padding: 0px;
 }
+
+#js-form a{
+    text-decoration: none;
+    color: black;
+}
+
+.clickback{
+    background-color: grey;
+}

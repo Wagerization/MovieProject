@@ -1,6 +1,6 @@
 "use strict";
 
-const apiKey = "348324-Adam-J6W7N7GS";
+const apiKey = "348324-Adam-61Q0E4LZ";
 const searchUrl = "https://tastedive.com/api/similar";
 const queryURL = "https://cors-anywhere.herokuapp.com/" + searchUrl;
 
@@ -22,7 +22,7 @@ function displayResults(responseJson) {
 function getMovieInfo(query) {
   const params = {
     q: query,
-    api_key: apiKey
+    k: apiKey,
   };
   const queryString = formatQueryParams(params);
   const url = queryURL + "?" + queryString;
