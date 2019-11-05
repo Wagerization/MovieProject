@@ -14,6 +14,7 @@
         <form id="js-form">
             <h1>Chose from the list and type in the search box what you wanna look for</h1>
             <ul>
+                <li class=''><a href="">Everything</a></li>
                 <li class=''><a href="">Movies</a></li>
                 <li class=''><a href="">TV Shows</a></li>
                 <li class=''><a href="">Band</a></li>
@@ -25,7 +26,7 @@
             <label for="search-term"></label>
             <input type="text" name="search-term" id="js-search-text" required>
             <label for="displayNumber"></label>
-            <input type="number" name="displayNumber" id="js-number" required>
+            <input type="number" name="displayNumber" id="js-number" min='1' max='50' required>
 
             <input type="submit">
         </form>

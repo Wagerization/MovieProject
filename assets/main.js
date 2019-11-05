@@ -19,10 +19,11 @@ function displayResults(responseJson) {
   $("#results-list").append(`<ol>${li}</ol>`);
 }
 
-function getMovieInfo(query) {
+function getMovieInfo(query, limit=10) {
   const params = {
     q: query,
     k: apiKey,
+    limit: limit,
   };
   const queryString = formatQueryParams(params);
   const url = queryURL + "?" + queryString;
@@ -45,7 +46,8 @@ function watchForm() {
   $("form").submit(event => {
     event.preventDefault();
     const searchTerm = $("#js-search-text").val();
-    getMovieInfo(searchTerm);
+    const numberText = $('#js-number').val();
+    getMovieInfo(searchTerm, numberText);
   });
 }
 
