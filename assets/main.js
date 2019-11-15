@@ -1,6 +1,6 @@
 "use strict";
 
-const apiKey = "348324-Adam-61Q0E4LZ";
+const apiKey = "348324-Adam-4Z4Z9W83";
 const searchUrl = "https://tastedive.com/api/similar";
 const queryURL = "https://cors-anywhere.herokuapp.com/" + searchUrl;
 
@@ -9,24 +9,45 @@ function formatQueryParams(params) {
     key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
   );
   return queryItems.join("&");
+  
 }
 
 function displayResults(responseJson) {
-  $("#results-list").empty();
+  $("#info-list").empty();
+  $("#similar-list").empty();
+  $("#results-list").addClass("active");
+  $(".more-info").addClass("active");
 
-  const li = responseJson.Similar.Results.map(l => `<li>${l.Name} - ${l.Type}</li>`)
+  for (let i = 0; i < responseJson.Similar.Info.length; i++) {
+    displayItem("#info-list", responseJson.Similar.Info[i]);
+  }
 
-  $("#results-list").append(`<ol>${li}</ol>`);
+  for (let i = 0; i < responseJson.Similar.Results.length; i++) {
+    displayItem("#similar-list", responseJson.Similar.Results[i], );
+  }
 }
 
-function getMovieInfo(query, limit=10) {
+function displayItem(listname, item) {
+  $(listname).append(`
+      <span class='divider'>
+      <li> ${item.Name} </li>
+      </span>
+      
+    `);
+}
+
+function getInfo(query, limit) {
   const params = {
     q: query,
     k: apiKey,
     limit: limit,
   };
+
+    
+  
   const queryString = formatQueryParams(params);
   const url = queryURL + "?" + queryString;
+  console.log(url)
   fetch(url)
     .then(response => {
       if (response.ok) {
@@ -42,13 +63,23 @@ function getMovieInfo(query, limit=10) {
     });
 }
 
-function watchForm() {
+function changeType(){
+  $('.list-genres li').click(event =>{
+    const genres = $('li').val();
+    console.log(genres);
+  })
+}
+
+function submitForm() {
   $("form").submit(event => {
     event.preventDefault();
+
     const searchTerm = $("#js-search-text").val();
-    const numberText = $('#js-number').val();
-    getMovieInfo(searchTerm, numberText);
+    const numberText = $("#js-number").val();
+
+    getInfo(searchTerm, numberText);
   });
 }
 
-$(watchForm);
+
+$(submitForm(),changeType())

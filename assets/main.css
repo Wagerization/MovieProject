@@ -1,5 +1,13 @@
-#results-list li{
-    list-style: none;
+*, html{
+    padding: 0px;
+    margin: 0px;
+}
+main{
+    text-align: center;
+}
+
+#js-search-text{
+    margin: 15px;
 }
 
 #js-form li{
@@ -18,6 +26,8 @@
     color: black;
 }
 
-.clickback{
-    background-color: grey;
+#info-list li, #similar-list li{
+    list-style: none; 
+    padding: 10px;
+    width: auto;
 }

@@ -8,36 +8,47 @@
     <title>Movie Search</title>
     <link rel="stylesheet" href="./assets/main.css">
 </head>
+<main>
+    <body>
+        <section>
+            <form id="js-form">
+                <div>
+                    <ul class="list-genres">
+                        <li>Everything</li>
+                        <li>Movies</li>
+                        <li>TV Shows</li>
+                        <li>Band</li>
+                        <li>Games</li>
+                        <li>Books</li>
+                        <li>Authors</li>
+                        <li>Podcasts</li>
+                    </ul>
+                </div>
+                <h1>Chose from the list and type in the search box what you wanna look for</h1>
+                <label for="clear"></label>
+                <label for="search-term"></label>
+                <input type="text" name="search-term" id="js-search-text" required>
+                <h2>Chose how many similar moives you want to see from 1 - 50</h2>
+                <label for="displayNumber"></label>
+                <input type="number" name="displayNumber" id="js-number" min='1' max='50' required>
 
-<body>
-    <section>
-        <form id="js-form">
-            <h1>Chose from the list and type in the search box what you wanna look for</h1>
-            <ul>
-                <li class=''><a href="">Everything</a></li>
-                <li class=''><a href="">Movies</a></li>
-                <li class=''><a href="">TV Shows</a></li>
-                <li class=''><a href="">Band</a></li>
-                <li class=''><a href="">Games</a></li>
-                <li class=''><a href="">Books</a></li>
-                <li class=''><a href="">Authors</a></li>
-                <li class=''><a href="">Podcasts</a></li>
-            </ul>
-            <label for="search-term"></label>
-            <input type="text" name="search-term" id="js-search-text" required>
-            <label for="displayNumber"></label>
-            <input type="number" name="displayNumber" id="js-number" min='1' max='50' required>
+                <input type="submit">
+            </form>
+        </section id='results-list'>
+        <ol id="info-list">
 
-            <input type="submit">
-        </form>
-    </section>
+        </ol>
+        <!--add text for simialr movies then make it display none then add it when you click the  submit button-->
+        <ol id="similar-list">
 
-    <section id="results-list">
-        
-    </section>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="./assets/main.js"></script>
-</body>
+        </ol>
+        <section>
+
+        </section>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="./assets/main.js"></script>
+    </body>
+</main>
 
 </html>
