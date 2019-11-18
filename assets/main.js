@@ -3,13 +3,14 @@
 const apiKey = "348324-Adam-4Z4Z9W83";
 const searchUrl = "https://tastedive.com/api/similar";
 const queryURL = "https://cors-anywhere.herokuapp.com/" + searchUrl;
+let genre = null;
+console.log(genre);
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
     key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
   );
   return queryItems.join("&");
-  
 }
 
 function displayResults(responseJson) {
@@ -23,7 +24,7 @@ function displayResults(responseJson) {
   }
 
   for (let i = 0; i < responseJson.Similar.Results.length; i++) {
-    displayItem("#similar-list", responseJson.Similar.Results[i], );
+    displayItem("#similar-list", responseJson.Similar.Results[i]);
   }
 }
 
@@ -36,18 +37,16 @@ function displayItem(listname, item) {
     `);
 }
 
-function getInfo(query, limit) {
+function getInfo(genre, query, limit) {
   const params = {
     q: query,
     k: apiKey,
-    limit: limit,
+    limit: limit
   };
 
-    
-  
   const queryString = formatQueryParams(params);
   const url = queryURL + "?" + queryString;
-  console.log(url)
+  console.log(url);
   fetch(url)
     .then(response => {
       if (response.ok) {
@@ -63,11 +62,12 @@ function getInfo(query, limit) {
     });
 }
 
-function changeType(){
-  $('.list-genres li').click(event =>{
-    const genres = $('li').val();
-    console.log(genres);
-  })
+function changeType() {
+  $(".list-genres").click(event => {
+    genre = $(event.target).text() + ":";
+
+    console.log(genre);
+  });
 }
 
 function submitForm() {
@@ -77,9 +77,11 @@ function submitForm() {
     const searchTerm = $("#js-search-text").val();
     const numberText = $("#js-number").val();
 
-    getInfo(searchTerm, numberText);
+    getInfo(genre, searchTerm, numberText);
   });
 }
 
+$(submitForm(), changeType());
 
-$(submitForm(),changeType())
+//book:harry potter and the half-blood prince
+//movie:harry potter and the half-blood prince
