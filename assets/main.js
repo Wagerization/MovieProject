@@ -39,9 +39,11 @@ function displayItem(listname, item) {
 
 function getInfo(genre, query, limit) {
   const params = {
+    type: genre,
     q: query,
     k: apiKey,
-    limit: limit
+    limit: limit,
+    
   };
 
   const queryString = formatQueryParams(params);
@@ -64,8 +66,7 @@ function getInfo(genre, query, limit) {
 
 function changeType() {
   $(".list-genres").click(event => {
-    genre = $(event.target).text() + ":";
-
+    genre = $(event.target).text().toLowerCase();
     console.log(genre);
   });
 }
