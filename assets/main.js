@@ -18,6 +18,7 @@ function displayResults(responseJson) {
   $("#similar-list").empty();
   $("#results-list").addClass("active");
   $(".more-info").addClass("active");
+  $(".same-text").addClass("active");
 
   for (let i = 0; i < responseJson.Similar.Info.length; i++) {
     displayItem("#info-list", responseJson.Similar.Info[i]);
@@ -33,7 +34,6 @@ function displayItem(listname, item) {
       <span class='divider'>
       <li> ${item.Name} </li>
       </span>
-      
     `);
 }
 

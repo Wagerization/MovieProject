@@ -2,8 +2,26 @@
     padding: 0px;
     margin: 0px;
 }
+
 main{
     text-align: center;
+}
+
+#js-form{
+    padding-top: 15px;
+}
+
+.list-genres li:hover {
+    cursor:pointer;
+}
+
+h1{
+    padding-top: 10px;
+}
+
+input{
+    border: none;
+    padding: 4px;
 }
 
 #js-search-text{
@@ -31,3 +49,34 @@ main{
     padding: 10px;
     width: auto;
 }
+
+#js-form{
+    background-color: #323c50;
+    padding-bottom: 15px;
+}
+
+body{
+    background-color: #046B99;
+    height: 85vh;
+}
+
+.results-title{
+    padding-top: 15px;
+}
+
+.similar-title{
+    padding: 15px 0;
+}
+
+.same-text{display: none;}
+
+.active{
+    display: block;
+}
+
+/* 
+color palette
+#046B99 blue
+#B3EFFF light blue 
+
+  */
